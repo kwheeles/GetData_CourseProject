@@ -34,17 +34,10 @@ traindf$Subject <- fread("train/subject_train.txt")
 
 # combine them
 fulldf <- rbind(testdf,traindf)
-#names(fulldf)[562] <- "Label"
-#names(fulldf)[563] <- "Subject"
 
 
 fulldf$Activity <- activity$V2[match(fulldf$Label,activity$V1)]
-#names(fulldf)[564] <- "Activity"
 
-# release memory for unneeded items
-#rm (features)
-#rm(testdf)
-#rm(traindf)
 
 extractdf <- fulldf %>% select(matches("mean"),matches("std"),Activity,Subject)
 
@@ -75,4 +68,4 @@ colnames(extractdf) <- as.character(lapply(colnames(extractdf),clean_name))
 
 tidydf <- extractdf %>% group_by(Activity,Subject) %>%
         summarise_each(funs(mean))
-write.table(tidydf,row.name=FALSE)
+write.table(tidydf, file = "tidy.txt",row.name=FALSE)

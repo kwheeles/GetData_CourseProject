@@ -103,3 +103,7 @@ Select the mean and std columns.
 Clean up the labelling to make it human readable.
 
 Summarize into a tidy data set based on group_by for activity and sujbect.
+
+Full description of raw data at:
+
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
